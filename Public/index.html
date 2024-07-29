@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <title>document</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="CSS/index.css">
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <script>
+    $(document).ready(function () {
+      $("#btnSignup").click(function () {
+        var email = $("#txtEmail").val();
+        var pwd = $("#txtPwd").val();
+        var type = $("#utype").val();
+        var url = "/signup-process?n=" + email + "&p=" + pwd + "&u=" + type;
+        $.get(url, function (response) {
+          $("#result").html(response);
+        });
+      });
+      $("#Basics").click(function () {
+        alert();
+
+      });
+
+
+      //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~``
+      $("#updtPwd").click(function () {
+        var emails = $("#nEmail").val();
+        var oldpassword = $("#nPwd").val();
+        var newpassword = $("#nPwd2").val();
+
+        alert("1");
+        var url = "/CheckDatainTable?email=" + email + "&password=" + oldpassword;
+        alert("2");
+
+        $.getJSON(url, function (JSONresp) {
+          alert("in ajax request");
+          alert(JSON.stringify(JSONresp));
+
+          if (JSONresp.length == 0) {
+            $("#result3").html("invalid user id");
+          }
+          else {
+            alert("jsonresp accepted");
+            $("#result3").html("welcome");
+            var url = "/update-password?email=" + email + "&oldpassword=" + oldpassword + "&newpassword" + newpassword;
+            alert("in new url");
+          }
+          alert("out");
+
+          $.getJSON(url, function (JSONresp1) {
+            alert("in ajax query 2");
+            alert(JSON.stringify(JSONresp1));
+            alert("accepted");
+            if (JSONresp1.length == 0) {
+              $("#result3").html("update failed");
+            }
+            else
+              $("#result3").html("updated");
+          })
+        })
+      })
+      //----------------------------------------
+      $("#btnLogin").click(function () {
+        var email = $("#txtEmail1").val();
+        var pwd = $("#txtPwd1").val();
+        var url = "/login-process?n=" + email + "&p=" + pwd;
+
+        $.getJSON(url, function (responseJSON) {
+          if (responseJSON.length == 0) {
+            $("#result1").html("Ivalid Email/Password-No Record Found");
+          }
+          else {
+            $("#result1").html("Valid User :" + responseJSON[0].type);
+            window.location.href = "welcome-provider.html";
+          }
+        })
+      });
+      //--------------------------------------------------
+
+      $("#btnLogin2").click(function () {
+        var email2 = $("#txtEmail2").val();
+        var pwd2 = $("#txtPwd2").val();
+        var url = "/login-process-needer?nm=" + email2 + "&pq=" + pwd2;
+
+        $.getJSON(url, function (responseJSON) {
+          if (responseJSON.length == 0) {
+            $("#result2").html("Ivalid Email/Password-No Record Found");
+          }
+          else {
+            $("#result2").html("Valid User :" + responseJSON[0].type);
+            window.location.href = "welcome-needer.html";
+
+          }
+        })
+      });
+      $("#txtEmail1").click(function () {
+        $("txtEmail1").length = "0";
+      })
+    });
+  </script>
+</head>
+
+<body>
+  <nav class="navbar navbar-white bg-light">
+    <a class="navbar-brand" href="#"><span
+        style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; font-size:25px ; margin-left: 20px; ">
+        &nbsp; MedCare</span></a>
+
+
+    <a class="nav-link active" type="button" href="#" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+      aria-expanded="false" aria-controls="collapseExample" style="margin-right: 100px; font-size: large;">Basics <i
+        class="fa fa-angle-down" aria-hidden="true"></i></a>
+
+    <div class="collapse" id="collapseExample" style="width: 50rem; margin-left: 800px;">
+      <div class="card card-body">
+        <div style="text-align:justify ;"><span style="font-style: italic;">Sharing is Caring</span><br>Become a part of
+          Medcare by providing medicines to needy people who need them. </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================================================================= -->
+
+  <div id="welcomespace">
+    <div id="welcometextspace">
+      <span id="welcometext1">Welcome to</span><br>
+      <span id="welcometext2">Medcare</span>
+    </div>
+    <div id="cardspace">
+      <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <div class="card" style="width: 18rem; ">
+        <img src="pics/team (3).jpg" class="card-img-top" alt="..."
+          style="border-top-left-radius: 50px;border-top-right-radius: 50px; ">
+        <div class="card-body">
+          <h5 class="card-title" style="color: darkblue; margin-left: 70px; font-size: 20px;">LogIn</h5>
+          <span style="text-align:justify;">Wanna help people by providing medicines? Kindly Login first, if already
+            have an account.</span>
+        </div>
+        <center>
+          <a class="nav-link active" type="button" class="btn btn-outline-white" data-bs-toggle="modal"
+            data-bs-target="#loginModal" style="margin-left: 10px; font-weight: 500; color: hotpink;">
+            Login as Provider
+          </a>
+          <a class="nav-link active" type="button" class="btn btn-outline-white" data-bs-toggle="modal"
+            data-bs-target="#loginModal2" style="margin-left: 10px; font-weight: 500; color: hotpink;">
+            Login as Needer
+          </a>
+        </center>
+      </div>
+      <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <div class="card" style="width: 18rem; ">
+        <img src="pics/Contact us-pana.png" class="card-img-top" alt="..."
+          style="border-top-left-radius: 50px;border-top-right-radius: 50px;  height: 170px; width: 200px; background-size: cover; margin-left: 20px;">
+        <div class="card-body">
+          <h5 class="card-title" style="color: darkblue; margin-left: 70px; font-size: 20px;">SignUp</h5>
+          <span style="text-align:justify;">Do join MedCare and help people fulfill their pharma needs and fulfill yours
+            as well. Do and get help now!</span>
+        </div><br>
+        <center>
+          <a href="provider-profile.html" style="text-decoration: none; color: hotpink; font-weight: 500; ">SignUp as
+            Provider</a><br>
+          <a href="needer-profile.html" style="text-decoration: none; color: hotpink; font-weight: 500; ">SignUp as
+            Needer</a>
+        </center>
+      </div>
+      <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <div class="card" style="width: 18rem; ">
+        <img src="pics/Instruction manual-cuate.png" class="card-img-top" alt="..."
+          style="border-top-left-radius: 50px;border-top-right-radius: 50px; height: 160px; width: 200px; background-size: cover; margin-left: 20px; ">
+        <div class="card-body">
+          <h5 class="card-title" style="color: darkblue; margin-left: 20px; font-size: 20px; margin-top: 10px;">Website
+            Mechanics</h5>
+          <span style="text-align:justify;"> Want to know how MedCare works and helps people with a fully secure portal
+            for the medicine donors and needers? Click here...</span><
+        </div><br>
+        <center>
+
+          <a href="aboutapp.html" style="text-decoration: none; color: hotpink; font-weight: 500; ">Learn
+            more</a>
+        </center>
+      </div>
+      <!--++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+      <div class="card" style="width: 18rem; ">
+        <img src="pics/team (1).jpg" class="card-img-top" alt="..."
+          style="border-top-left-radius: 50px;border-top-right-radius: 50px; ">
+        <div class="card-body">
+          <h5 class="card-title" style="color: darkblue; margin-left: 70px; font-size: 20px;">About Us</h5>
+          <span style="text-align:justify;">Do join MedCare and help people fulfill their pharma needs and fulfill yours
+            as well. Do help and get help now!</span>
+        </div>
+        <center>
+          <a href="aboutus.html" style="text-decoration: none; color: hotpink; font-weight: 500; ">Learn
+            more</a><br>
+        </center>
+      </div>
+    </div>
+  </div>
+  <div id="bottomcards">
+
+  </div>
+  <!-- ============================================================================================================================ -->
+
+
+  <!===================================================================================================================================>
+    <!-- ================================================================================================================ -->
+    <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: palevioletred;">
+            <h2 class="modal-title" id="signupLabel"
+              style="color:black ; margin-left: 340px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: whitesmoke;">
+              LogIn </h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div style="width: 400px ; height:400px ; float:left ; ">
+              <img src="pics/Business Plan-amico.png" alt=""
+                style="width: 400px ; height:400px ; background-size: cover; background-repeat: no-repeat; ">
+            </div>
+            <div style="width: 300px ; height:400px ; float: left;">
+              <form>
+                <div class="row g-5" style="margin-top:2px ; margin-left: 15px;">
+                  <div class="col-md-12">
+                    <label for="txtEmail1" class="form-label" style="color:black ;">Email ID</label>
+                    <input type="email" class="form-control" id="txtEmail1" value="abc@gmail.com"
+                      onclick="this.value=''">
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="txtPwd1" class="form-label" style="color:black ;">Password</label>
+                    <input type="password" class="form-control" id="txtPwd1" value="abcd1111" onclick="this.value=''">
+                  </div>
+                  <div class="row g-3" style="margin-top:80px ; margin-left: 40px;">
+                    <div class="col-md-10" style="margin-bottom: 30px;">
+                      <center>
+                        <input type="button" id="btnLogin" class="btn" value=" LogIn"
+                          style="background-color: palevioletred; color: whitesmoke;"
+                          formaction="welcome-provider.html">
+                      </center>
+                    </div>
+                  </div>
+              </form>
+            </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="modal-footer" style="height:50px ;">
+          <div id="result1" style="color: black; text-align: left;"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ================================================================================================================== -->
+    <div class="modal fade" id="loginModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: palevioletred;">
+            <h2 class="modal-title" id="signupLabel"
+              style="color:black ; margin-left: 340px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: whitesmoke;">
+              LogIn </h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div style="width: 400px ; height:400px ; float:left ; ">
+              <img src="pics/Business Plan-amico.png" alt=""
+                style="width: 400px ; height:400px ; background-size: cover; background-repeat: no-repeat; ">
+            </div>
+            <div style="width: 300px ; height:400px ; float: left;">
+              <form>
+                <div class="row g-5" style="margin-top:2px ; margin-left: 15px;">
+                  <div class="col-md-12">
+                    <label for="txtEmail2" class="form-label" style="color:black ;">Email ID</label>
+                    <input type="email" class="form-control" id="txtEmail2" value="ABC@gmail.com" onfocus="this.value=''">
+                  </div>
+
+                  <div class="col-md-12">
+                    <label for="txtPwd2" class="form-label" style="color:black ;">Password</label>
+                    <input type="password" class="form-control" id="txtPwd2" value="abcd1111" onfocus="this.value=''">
+                  </div>
+                  <div class="row g-3" style="margin-top:80px ; margin-left: 40px;">
+                    <div class="col-md-10" style="margin-bottom: 30px;">
+                      <center>
+                        <input type="button" id="btnLogin2" class="btn" value=" LogIn"
+                          style="background-color: palevioletred; color: whitesmoke;" formaction="welcome-needer.html">
+                      </center>
+                    </div>
+                  </div>
+              </form>
+            </div>
+            </form>
+          </div>
+
+        </div>
+        <div class="modal-footer" style="height:50px ;">
+          <div id="result2" style="color: black; text-align: left;"></div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- ================================================================================================================== -->
+    <div class="modal fade" id="securitymodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header" style="background-color: skyblue;height: 50px;">
+            <h3 class="modal-title" id="signupLabel"
+              style="margin-left: 320px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: white;">
+              Security </h3>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" style="padding: 0%;">
+            <div style="width: 400px ; height:470px ; float:left ; ">
+              <img src="pics/415.jpg" alt=""
+                style="width: 400px ; height:470px ; background-size: cover; background-repeat: no-repeat; ">
+            </div>
+            <div style="width: 398px ; height:470px ; float: left;">
+              <form>
+                <div class="row g-5" style="margin-top:2px ; margin-left: 15px;">
+                  <div class="col-md-10">
+                    <label for="nEmail" class="form-label" style="font-family: cursive ; font-size: larger;">
+                      E-mail</label>
+                    <input type="email" class="form-control" name="nEmail" id="nEmail">
+                  </div>
+                  <div class="col-md-10">
+                    <label for="nPwd" class="form-label" style="font-family: cursive ; font-size: larger;"> Old
+                      Password</label>
+                    <input type="password" class="form-control" name="nPwd" id="nPwd">
+                  </div>
+
+                  <div class="col-md-10">
+                    <label for="nPwd2" class="form-label" style="font-family: cursive ; font-size: larger;"> New
+                      Password</label>
+                    <input type="password" class="form-control" name="nPwd2" id="nPwd2">
+                  </div>
+                  <div class="row g-3" style="margin-top:20px ; margin-left: 120px;">
+                    <div class="col-md-10" style="margin-bottom: 30px;">
+                      <input formaction="/update-password" type="button" class="btn btn-danger" name="updtPwd"
+                        id="updtPwd" value="Update" style="font-size:large ;">
+                    </div>
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer" id="result3"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="modal" tabindex="-1" role="dialog" id="Basics">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Modal body text goes here.</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="collapse" id="Basics">
+
+      <div class="card card-body">
+        Some placeholder content for the collapse component. This panel is hidden by default but revealed when the
+        user activates the relevant trigger.
+      </div>
+
+    </div>
+</body>
+
+</html>

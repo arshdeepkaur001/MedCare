@@ -1,0 +1,23 @@
+#outbox{
+    width: 700px;
+    height: 500px;
+    margin: auto;
+    margin-top: 20px;
+}
+#ob1{
+    width: 700px;
+    height: 35px;
+    background-color: palevioletred ;
+    margin-top: 4px;
+    background-size: contain;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+#ob2{
+    width: 700px;
+    height: 500px;
+    background-color: rgb(253, 225, 235);
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0px;
+}

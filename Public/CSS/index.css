@@ -1,0 +1,48 @@
+#welcomespace{
+    width: 1284px;
+    height: 775px;
+    background-image: url(../pics/onlinepharma1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding-top: 250px;
+    box-shadow: 100px 100px 100px 100px gainsboro;
+}
+/* ============================================================== */
+#welcometextspace{
+    width: 500px;
+    height: 200px;
+    margin-left: 100px;
+}
+#welcometext1{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 50px;
+    color:  hotpink;
+}
+#welcometext2{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 90px;
+    color:  cornflowerblue;
+    margin-left: 150px;
+}
+/* ============================================================== */
+#cardspace{
+    width: 1280px;
+    height: 250px;
+    margin-top: 250px;
+    
+
+}
+.card{
+    margin-left: 25px;
+    border-radius: 50px;
+    padding-bottom: 30px;
+    float: left;
+}
+#bottomcards{
+    width: 1284px;
+    height: 800px;
+    background-image: url(../pics/onlinepharma2COPY.jpg);
+    background-size: cover;
+    box-shadow: 100px 100px 100px 100px gainsboro;
+}

@@ -1,0 +1,58 @@
+#container{
+    width: 1280px;
+    height: 600px;
+    background-image: url(../pics/onlinepharma3.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#allrecords{
+    width: 180px;
+    height: 40px;
+    background-color: palevioletred;
+    color: white;
+}
+#information{
+    width: 1280px;
+    height: 50px;
+    margin-top: 50px;
+    margin-bottom: 60px;
+}
+#inputcity{
+    width: 300px;
+    height: 30px;
+    background-color: rgba(216, 112, 147, 0.345);
+    
+    margin-right: 10px;
+    border: transparent;
+    border-radius: 10px;
+}
+#inputmed{
+    width: 300px;
+    height: 30px;
+    background-color: rgba(216, 112, 147, 0.345);
+    
+    margin-right: 20px;
+    border: transparent;
+    border-radius: 10px;
+}
+#showrecordsbutton{
+    width: 260px;
+    height: 34px;
+    background-color: rgba(216, 112, 147, 0.345);
+    color: black;
+    border: transparent;
+    border-radius: 10px;
+    font-size: larger;
+}
+.card{
+    width: 300px;
+    height: 600px;
+    background-color: transparent;
+}
+#contactModal{
+width: 400px;
+height: 600px;
+padding-left: 30px;
+padding-right: 30px;
+margin: auto;
+}

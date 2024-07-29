@@ -1,0 +1,40 @@
+#body {
+    width: 1225px;
+    height: 300px;
+    background-color: snow;
+}
+
+#bluestrap {
+
+    width: inherit;
+    height: 70px;
+    background-color: rgb(218, 107, 144);
+    padding: 10px;
+    text-align: center;
+}
+
+label {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: medium;
+}
+
+#svinfo {
+    background-color: rgb(218, 107, 144);
+    border: 0px;
+}
+
+#updt {
+    background-color: rgb(218, 107, 144);
+    border: 0px;
+}
+
+#srch {
+    background-color: rgb(218, 107, 144);
+    border: 0px;
+
+}
+
+.row {
+    margin-bottom: 10px;
+}
+
